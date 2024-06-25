@@ -226,6 +226,22 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
+
+  require 'kickstart/plugins/autopairs',
+  require 'kickstart/plugins/gitsigns',
+  require 'kickstart/plugins/indent_line',
+  require 'kickstart/plugins/lint',
+  require 'kickstart/plugins/neo-tree',
+
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+
+  'mg979/vim-visual-multi',
+
+  { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons' },
+
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
@@ -795,8 +811,6 @@ require('lazy').setup({
     end,
   },
 
-  { 'nvim-tree/nvim-tree.lua', opts = {} },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -833,12 +847,11 @@ require('lazy').setup({
         return '%2l:%-2v'
       end
 
-      require('mini.pairs').setup {}
-
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
